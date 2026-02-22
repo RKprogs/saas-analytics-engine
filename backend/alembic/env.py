@@ -13,9 +13,14 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
+
+DATABASE_URL = os.getenv("DATABASE_URL")
+if not DATABASE_URL:
+    raise RuntimeError("DATABASE_URL must be set")
+
 config.set_main_option(
     "sqlalchemy.url",
-    os.getenv("DATABASE_URL") # type: ignore
+    DATABASE_URL
 )
 
 # Interpret the config file for Python logging.
