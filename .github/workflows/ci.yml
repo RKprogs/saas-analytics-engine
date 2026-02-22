@@ -44,6 +44,13 @@ jobs:
           pip install -r requirements.txt
           pip install pytest
 
+      - name: Wait for Postgres
+        run: |
+          until pg_isready -h localhost -p 5432 -U postgres; do
+            echo "Waiting for postgres..."
+            sleep 2
+          done
+
       - name: Run Alembic migrations
         run: |
           cd backend
