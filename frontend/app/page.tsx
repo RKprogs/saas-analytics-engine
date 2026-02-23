@@ -2,6 +2,7 @@ import KPIGrid from "@/components/KPIGrid";
 import RetentionChart from "@/components/RetentionChart";
 import ChurnTable from "@/components/ChurnTable";
 import ExperimentPanel from "@/components/ExperimentPanel";
+import SQLPanel from "@/components/SQLPanel";
 
 export default function Home() {
   return (
@@ -17,6 +18,8 @@ export default function Home() {
       <ChurnTable />
 
       <ExperimentPanel />
+
+      <SQLPanel />
     </main>
   );
 }

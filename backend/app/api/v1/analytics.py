@@ -13,6 +13,9 @@ from app.services.analytics_service import (
     get_top_links,
     get_clicks_by_day
 )
+from app.services.sql_service import execute_readonly_query
+from pydantic import BaseModel
+
 
 
 router = APIRouter()
@@ -124,3 +127,10 @@ def churn_impact(experiment_name: str, db: Session = Depends(get_db)):
 @router.get("/churn/top-risk")
 def top_risk_users(limit: int = 10, db: Session = Depends(get_db)):
     return get_top_churn_risk_users(db, limit)
+
+class SQLQuery(BaseModel):
+    query: str
+
+@router.post("/sql/query")
+def run_sql_query(payload: SQLQuery, db: Session = Depends(get_db)):
+    return execute_readonly_query(db, payload.query)
