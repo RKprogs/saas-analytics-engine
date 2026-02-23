@@ -6,40 +6,40 @@
 
 🎯 Overview
 
-    This platform simulates a real SaaS company environment and provides:
-        - Link shortener with click analytics
-        - User behavioral tracking
-        - Retention cohort analysis
-        - Churn prediction using machine learning
-        - A/B testing statistical engine
-        - SQL-based business intelligence console
-        - Executive KPI dashboard
-        - CI/CD pipeline
-        - Dockerized deployment
-        - Infrastructure-as-Code (Terraform-ready)
+This platform simulates a real SaaS company environment and provides:
+- Link shortener with click analytics
+- User behavioral tracking
+- Retention cohort analysis
+- Churn prediction using machine learning
+- A/B testing statistical engine
+- SQL-based business intelligence console
+- Executive KPI dashboard
+- CI/CD pipeline
+- Dockerized deployment
+- Infrastructure-as-Code (Terraform-ready)
 
 ---
 
 🧠 Architecture
 
 Backend:
-    - FastAPI
-    - PostgreSQL
-    - SQLAlchemy
-    - Alembic
-    - scikit-learn (Logistic Regression)
-    - statsmodels (Z-test)
+- FastAPI
+- PostgreSQL
+- SQLAlchemy
+- Alembic
+- scikit-learn (Logistic Regression)
+- statsmodels (Z-test)
 
 Frontend:
-    - Next.js (App Router)
-    - TailwindCSS
-    - Recharts
+- Next.js (App Router)
+- TailwindCSS
+- Recharts
 
 DevOps:
-    - Docker & Docker Compose
-    - GitHub Actions CI
-    - Prometheus & Grafana
-    - Terraform (local Docker provider)
+- Docker & Docker Compose
+- GitHub Actions CI
+- Prometheus & Grafana
+- Terraform (local Docker provider)
 
 ---
 
