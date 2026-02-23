@@ -4,7 +4,7 @@ from app.core.database import get_db
 from app.services.experiment_service import assign_user_to_experiment, churn_by_variant, evaluate_experiment
 from app.core.dependencies import get_current_user
 from app.infrastructure.database.models import User
-from app.services.analytics_service import get_daily_active_users, get_rolling_dau, get_mau, update_all_churn_probabilities
+from app.services.analytics_service import get_daily_active_users, get_rolling_dau, get_mau, get_top_churn_risk_users, update_all_churn_probabilities
 from app.services.analytics_service import get_day1_retention, get_cohort_retention
 from app.services.analytics_service import generate_churn_features, get_user_churn_features, get_executive_metrics
 from app.ml_inference.churn_predictor import churn_predictor
@@ -120,3 +120,7 @@ def evaluate_experiment_endpoint(
 @router.get("/experiments/churn-impact/{experiment_name}")
 def churn_impact(experiment_name: str, db: Session = Depends(get_db)):
     return churn_by_variant(db, experiment_name)
+
+@router.get("/churn/top-risk")
+def top_risk_users(limit: int = 10, db: Session = Depends(get_db)):
+    return get_top_churn_risk_users(db, limit)

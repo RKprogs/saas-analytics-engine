@@ -238,3 +238,20 @@ def get_executive_metrics(db: Session):
         "high_risk_users": high_risk
     }
 
+def get_top_churn_risk_users(db: Session, limit: int = 10):
+    users = (
+        db.query(User)
+        .filter(User.churn_probability.isnot(None))
+        .order_by(User.churn_probability.desc())
+        .limit(limit)
+        .all()
+    )
+
+    return [
+        {
+            "user_id": str(user.id),
+            "email": user.email,
+            "churn_probability": round(float(user.churn_probability), 4) # type: ignore
+        }
+        for user in users
+    ]
