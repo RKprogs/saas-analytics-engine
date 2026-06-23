@@ -10,7 +10,7 @@ scheduler = BackgroundScheduler()
 def retrain_model():
     print("Retraining churn model...")
     result = subprocess.run(
-        ["python", "-m", "app.ml.training.churn_training"],
+        ["python", "-m", "ml.training.churn_training"],
         capture_output=True
     )
     if result.returncode != 0:
